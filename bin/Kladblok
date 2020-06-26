@@ -1,0 +1,44 @@
+// FASE 1: doelstelling
+ 
+
+
+
+
+
+//FASE 2: technische doelstelling
+
+
+
+
+
+//FASE 3 code
+	String gevuldeCode = yahtzeespel.spelen(legeCode); // code wordt gestuurd naar spelen(), deze komt gevuld
+															// terug en wordt opgeslagen in gevuldeCode
+
+		if (gevuldeCode.contentEquals("q")) {
+			System.out.println("Spel gestopt! Groot gelijk, volgens mij is het kwart voor bier..");
+			System.out.println("Einde spel.");
+			System.exit(1);
+		}
+		if (gevuldeCode.contentEquals("11111") || gevuldeCode.contentEquals("22222")
+				|| gevuldeCode.contentEquals("33333") || gevuldeCode.contentEquals("44444")
+				|| gevuldeCode.contentEquals("55555") || gevuldeCode.contentEquals("66666")) {
+			System.out.println("Yahtzee! Je hebt gewonnen!");
+			System.out.println("Einde spel!");
+			System.exit(1);
+
+		}
+
+		Speler speler = new Speler();
+		speler.worp(gevuldeCode); // gevuldeCode wordt opgeslagen in ArrayList
+
+		Worp worp = new Worp();
+		worp.uitslag(Integer.parseInt(gevuldeCode)); // de uitslag van de worp wordt geprint op het scherm
+
+		String codeAlsString = Integer.toString(Integer.parseInt(gevuldeCode)); // gevulde code wordt naar String
+																				// omgezet zodat deze naar vasthouden()
+																				// kan
+		String returnedCode = yahtzeespel.vasthouden(codeAlsString); // wordt aan de speler gevraagd welke dobbelstenen
+																		// vast te houden en welke opnieuw te gooien
+
+		gevuldeCode = returnedCode;	 //returnedcode vult weer de eerdere gevuldeCode (voor makkelijk kopieren van lappen code)
